@@ -8,68 +8,6 @@ using System;
 
 namespace ContactApiTest.UpdateContactTest
 {
-    public class ContactTest
-    {
-        
-    }
-
-    public class ContactControllerTest
-    {
-        [Fact]
-        public async Task PutContactSucceededTest()
-        {
-            var contact = new ContactDto();
-
-            var updateContactService = Substitute.For<IUpdateContactService>();
-
-            ContactController controller = new ();
-
-            await controller.Put(contact, updateContactService);
-        }
-
-        [Fact]
-        public async Task PutContactFailureTest()
-        {
-            var contact = new ContactDto();
-
-            var updateContactService = Substitute.For<IUpdateContactService>();
-
-            ContactController controller = new();
-
-            await controller.Put(contact, updateContactService);
-        }
-    }
-
-    public class ContactDtoTest
-    {
-        [Fact]
-        public void ContactDtoDefaultValuesTest()
-        {
-            var newContact = new ContactDto();
-
-            newContact.Id.Should().BeEmpty();
-            newContact.Name.Should().BeEmpty();
-            newContact.Email.Should().BeEmpty();
-            newContact.PhoneNumber.Should().BeEmpty();
-        }
-    }
-
-    public class ContactRepositoryTest
-    {
-        [Fact]
-        public async Task SaveTest()
-        {
-            var options =new DbContextOptionsBuilder<ContactRepository>()
-                .UseInMemoryDatabase("test")
-                .Options;
-
-            var contact = new Contact();
-
-            IContactRepository sut = new ContactRepository(options);
-
-            await sut.Save(contact);
-        }
-    }
 
     public class ContactValidationTest
     {
@@ -119,18 +57,6 @@ namespace ContactApiTest.UpdateContactTest
 
             validation.Succeeded.Should().BeFalse();
             validation.Errors.Should().Contain("email can not be empty");
-        }
-    }
-
-    public class UpdateContactServiceTest
-    {
-        [Fact]
-        public void T()
-        {
-            var repository = Substitute.For<IContactRepository>();
-
-            UpdateContactService updateContactService = new UpdateContactService(repository);
-
         }
     }
 }
