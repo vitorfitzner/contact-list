@@ -1,10 +1,14 @@
 ﻿using Xunit;
+using NSubstitute;
 using FluentAssertions;
 using ContactApi.UpdateContact;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using System;
 
 namespace ContactApiTest.UpdateContactTest
 {
+
     public class ContactValidationTest
     {
         [Fact]
